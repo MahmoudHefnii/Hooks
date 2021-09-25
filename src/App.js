@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useState } from "react";
+import "./App.css";
+import ComponentOne from "./components/ComponentOne";
+import FetchingData from "./components/useEffect/FetchingData";
+import FetchingPost from "./components/useEffect/FetchingPost";
+import BasicCounter from "./components/useState/BasicCounter";
+import CounterTwo from "./components/useState/CounterTwo";
+import ObjectState from "./components/useState/ObjectState";
 
+export const DataContext = createContext();
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+     const [userName, setUserName] = useState("Hi Mahmoud");
+     return (
+          <div className="App">
+               <h3 className="header">React Hooks</h3>
+               <DataContext.Provider value={{ userName }}>
+                    <ComponentOne />
+               </DataContext.Provider>
+               <button onClick={() => setUserName("Hi Mahmoud Hefnii")}>Change</button>
+               {/* <BasicCounter /> */}
+               {/* <CounterTwo /> */}
+               {/* <ObjectState /> */}
+               {/* <FetchingData /> */}
+               {/* <FetchingPost /> */}
+          </div>
+     );
 }
 
 export default App;
